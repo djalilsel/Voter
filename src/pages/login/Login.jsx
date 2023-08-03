@@ -16,8 +16,8 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="flex-1 flex flex-col justify-center">
-                        <h1 className="text-4xl mb-10 ml-4">Login</h1>
-                        <form action="Login" className="ml-4 w-11/12 flex flex-col">
+                        <h1 className="text-4xl mb-10 ml-4 font-bold text-slate-600">Login</h1>
+                        <form action="login" className="ml-4 w-11/12 flex flex-col">
                             <input name="username" type="text" placeholder="Username" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
                             <input name="password" type="password" placeholder="Password" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
                             <button className="text-white bg-background-purple mt-8 inline-block w-40 p-2">
