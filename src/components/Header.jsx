@@ -10,7 +10,7 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 
 const Header = () => {
     return (
-        <div className='flex justify-between items-center px-8 h-[65px] border'>
+        <div className='flex justify-between items-center bg-white px-8 h-[65px] border sticky top-0 z-20'>
             <div className='flex gap-6 items-center'>
                 <Link to="/" className='text-cyan-700 text-xl font-bold mr-4'>
                     Voter

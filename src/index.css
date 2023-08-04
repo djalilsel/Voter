@@ -14,3 +14,10 @@
           center;
     background-size: cover;
 }
+
+.stick-height {
+  height: calc(100vh - 70px);
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
