@@ -57,3 +57,51 @@ export const others = [
         link: "reach"
     },
 ]
+
+export const friendSuggestions = [
+    {
+        id: 1,
+        image: groups,
+        name: "Ahmed khalouta",
+        url: "/profile/1",
+    },
+    {
+        id: 2,
+        image: gallery,
+        name: "Baloumi 9adour",
+        url: "/profile/2",
+    },
+    {
+        id: 3,
+        image: reach,
+        name: "Ali Housan",
+        url: "/profile/3",
+    },
+]
+
+export const hottestVotes = [
+    {
+        id: 1,
+        image: groups,
+        publisher: "Ahmed khalouta",
+        publisherUrl: "/profile/1",
+        postUrl: "/post/1",
+        description: "What is this?"
+    },
+    {
+        id: 2,
+        image: gallery,
+        publisher: "Baloumi 9adour",
+        publisherUrl: "/profile/2",
+        postUrl: "/post/2",
+        description: "Am i Handsome?"
+    },
+    {
+        id: 3,
+        image: reach,
+        publisher: "Ali Housan",
+        publisherUrl: "/profile/3",
+        postUrl: "/post/3",
+        description: "XQC is retarded?"
+    },
+]

@@ -18,7 +18,7 @@ const Leftbar = () => {
     })
 
     return (
-        <div className='min-w-[300px] p-4 flex flex-col gap-6 sticky top-[65px] stick-height overflow-scroll'>
+        <div className='min-w-[300px] p-4 flex flex-col gap-6 sticky top-[65px] stick-height overflow-scroll no-scrollbar'>
             <div className='flex flex-col gap-3'>
                 {MENU}
             </div>
