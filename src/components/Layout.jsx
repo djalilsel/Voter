@@ -5,7 +5,7 @@ import Leftbar from './Leftbar';
 import Rightbar from './Rightbar';
 
 export function loader() {
-    const logged = false
+    const logged = true
     if(!logged){
         return redirect("/login")
     }
@@ -16,9 +16,11 @@ const Layout = () => {
     return (
         <div>
             <Header />
-            <Leftbar />
-            <Outlet />
-            <Rightbar />
+            <div className='flex justify-center'>
+                <Leftbar />
+                <Outlet/>
+                <Rightbar />
+            </div>
         </div>
     );
 };
