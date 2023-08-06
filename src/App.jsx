@@ -10,7 +10,7 @@ import Notfound from "./pages/Notfound"
 
 function App() {
 
-
+  localStorage.removeItem("user")
 
   const router = createBrowserRouter(createRoutesFromElements(
     <>

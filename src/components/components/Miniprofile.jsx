@@ -8,7 +8,7 @@ const Miniprofile = ({ data }) => {
                 <img src={`${data.image}`} className='w-7 h-7'/>
                 <span>{data.name}</span>
             </Link>
-            <div className='border px-2 mr-2 bg-blue-500 text-white font-semibold cursor-pointer'>
+            <div className='border-none px-2 mr-2 bg-blue-500 text-white font-semibold cursor-pointer'>
                 Follow
             </div>
         </div>

@@ -105,3 +105,30 @@ export const hottestVotes = [
         description: "XQC is retarded?"
     },
 ]
+
+export const users = [
+    {
+        id: 1,
+        username: "Ahmed",
+        password: "khalouta",
+        image: groups,
+        name: "Ahmed khalouta",
+        url: "/profile/1",
+    },
+    {
+        id: 2,
+        username: "Baloumi",
+        password: "9adour",
+        image: gallery,
+        name: "Baloumi 9adour",
+        url: "/profile/2",
+    },
+    {
+        id: 3,
+        username: "Ali",
+        password: "Housan",
+        image: reach,
+        name: "Ali Housan",
+        url: "/profile/3",
+    },
+]

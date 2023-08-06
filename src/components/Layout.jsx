@@ -5,18 +5,29 @@ import Leftbar from './Leftbar';
 import Rightbar from './Rightbar';
 
 export function loader() {
-    const logged = true
-    if(!logged){
+    const user = localStorage.user
+    console.log(user)
+    if(!user){
         return redirect("/login")
     }
     return null;
 }
 
 const Layout = () => {
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+    
+
+
+
     return (
-        <div>
-            <Header />
-            <div className='flex justify-center'>
+        <div className='dark:bg-[#212121] border-none dark:text-white'>
+            <Header/>
+            <div className='flex justify-center z-20'>
                 <Leftbar />
                 <Outlet/>
                 <Rightbar />

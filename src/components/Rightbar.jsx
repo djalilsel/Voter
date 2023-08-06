@@ -15,13 +15,13 @@ const Rightbar = () => {
     })
 
     return (
-        <div className='min-w-[400px] p-4 flex flex-col gap-6 sticky top-[65px] stick-height overflow-scroll bg-[#8f8d9] no-scrollbar'>
-            <div className='border px-4 pt-3 pb-6 flex flex-col gap-4 shadow-lg'>
-                <span className='text-slate-600'>Suggested for you</span>
+        <div className='min-w-[430px] h-full p-4 flex flex-col gap-6 sticky top-[65px] stick-height overflow-scroll dark:bg-[#535353] no-scrollbar'>
+            <div className='border dark:border-[#616161] px-4 pt-3 pb-6 flex flex-col gap-4 shadow-lg dark:bg-[#212121]'>
+                <span className='text-slate-600 dark:text-slate-300'>Suggested for you</span>
                 {FRIENDSUGGESTIONS}
             </div>
-            <div className='border px-4 pt-3 pb-6 flex flex-col gap-4 shadow-lg'>
-                <span className='text-slate-600'>Hotest Votes</span>
+            <div className='border dark:border-[#616161] px-4 pt-3 pb-6 flex flex-col gap-4 shadow-lg dark:bg-[#212121]'>
+                <span className='text-slate-600 dark:text-slate-300'>Hotest Votes</span>
                 {HOTTESTVOTES}
             </div>
         </div>

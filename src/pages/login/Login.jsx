@@ -1,7 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, redirect } from "react-router-dom";
+import { userAuth } from "../../../Auth";
 
 const Login = () => {
+
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit = () => {
+        userAuth(username, password)
+        return redirect("/")
+    }
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        if(e.target.name === "username"){
+            setUsername(e.target.value)
+        }
+        if(e.target.name === "password"){
+            setPassword(e.target.value)
+        }
+    }
+
     return (
         <div className="h-screen bg-background-purple flex justify-center items-center">
             <div className="w-[700px] h-[500px] rounded-xl bg-white flex justify-stretch">
@@ -17,13 +37,13 @@ const Login = () => {
                 </div>
                 <div className="flex-1 flex flex-col justify-center">
                         <h1 className="text-4xl mb-10 ml-4 font-bold text-slate-600">Login</h1>
-                        <form action="login" className="ml-4 w-11/12 flex flex-col">
-                            <input name="username" type="text" placeholder="Username" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
-                            <input name="password" type="password" placeholder="Password" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
-                            <button className="text-white bg-background-purple mt-8 inline-block w-40 p-2">
+
+                            <input name="username" value={username} onChange={handleChange} type="text" placeholder="Username" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
+                            <input name="password" value={password} onChange={handleChange} type="password" placeholder="Password" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
+                            <button className="text-white bg-background-purple mt-8 inline-block w-40 p-2" type="submit" onClick={handleSubmit}>
                                 Login
                             </button>
-                        </form>
+
                 </div>
             </div>
         </div>
