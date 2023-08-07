@@ -1,21 +1,15 @@
-import { friend, groups, img, gallery, map, messages, reach, help } from "./src/assets"
+import { friend, groups, img, gallery, map, messages, reach, help, sav, geo, geko } from "./src/assets"
 
 
 export const menu = [
     {
         id: 1,
-        title: "Profile",
-        icon: img,
-        link: "profile"
-    },
-    {
-        id: 2,
         title: "Followed",
         icon: friend,
         link: "follows"
     },
     {
-        id: 3,
+        id: 2,
         title: "Groups",
         icon: groups,
         link: "groups"
@@ -130,5 +124,35 @@ export const users = [
         image: reach,
         name: "Ali Housan",
         url: "/profile/3",
+    },
+]
+
+export const posts = [
+    {
+        id: 1,
+        pfp: groups,
+        image: sav,
+        publisher: "Ahmed khalouta",
+        publisherUrl: "/profile/1",
+        postUrl: "/post/1",
+        description: "What is this?"
+    },
+    {
+        id: 2,
+        pfp: gallery,
+        image: geo,
+        publisher: "Baloumi 9adour",
+        publisherUrl: "/profile/2",
+        postUrl: "/post/2",
+        description: "Am i Handsome?"
+    },
+    {
+        id: 3,
+        pfp: reach,
+        image: geko,
+        publisher: "Ali Housan",
+        publisherUrl: "/profile/3",
+        postUrl: "/post/3",
+        description: "XQC is retarded?"
     },
 ]

@@ -6,7 +6,6 @@ import Rightbar from './Rightbar';
 
 export function loader() {
     const user = localStorage.user
-    console.log(user)
     if(!user){
         return redirect("/login")
     }

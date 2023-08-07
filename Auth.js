@@ -1,8 +1,10 @@
 import { users } from './data'
+import { redirect } from 'react-router'
 
 export const userAuth = (username, password) => {
     let loggedIn = false
     let indexx
+    console.log("hello 2")
     users.map((user, index) => {
         if(user.username === username && user.password === password){
             loggedIn = true
@@ -12,8 +14,8 @@ export const userAuth = (username, password) => {
     })
 
     if(loggedIn){
-        localStorage.setItem("user", JSON.stringify(users[indexx])) 
+        localStorage.setItem("user", JSON.stringify(users[indexx]))
     }
-
-    return;
+    console.log("hello three")
+    return redirect("/")
 }

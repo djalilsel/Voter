@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
 import { userAuth } from "../../../Auth";
 
 const Login = () => {
@@ -9,7 +9,9 @@ const Login = () => {
 
     const handleSubmit = () => {
         userAuth(username, password)
+        console.log("ehllo1")
         return redirect("/")
+
     }
 
     const handleChange = (e) => {
@@ -37,13 +39,13 @@ const Login = () => {
                 </div>
                 <div className="flex-1 flex flex-col justify-center">
                         <h1 className="text-4xl mb-10 ml-4 font-bold text-slate-600">Login</h1>
-
+                        <div className="ml-4 w-11/12 flex flex-col" onSubmit={handleSubmit}>
                             <input name="username" value={username} onChange={handleChange} type="text" placeholder="Username" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
                             <input name="password" value={password} onChange={handleChange} type="password" placeholder="Password" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
                             <button className="text-white bg-background-purple mt-8 inline-block w-40 p-2" type="submit" onClick={handleSubmit}>
                                 Login
                             </button>
-
+                        </div>
                 </div>
             </div>
         </div>

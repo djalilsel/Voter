@@ -19,6 +19,7 @@ const Header = () => {
         
     }
 
+    const user = JSON.parse(localStorage.user)
 
     return (
         <div className='flex justify-between items-center px-8 h-[65px] border-b sticky top-0 z-30 dark:bg-[#212121] dark:border-[#616161]'>
@@ -38,11 +39,11 @@ const Header = () => {
                 <FontAwesomeIcon icon={faUser}  className='dark:text-white'/> 
                 <FontAwesomeIcon icon={faEnvelope} className='dark:text-white fa-lg' />                
                 <FontAwesomeIcon icon={faBell} className='dark:text-white fa-lg' />
-                <div className='rounded-full border w-12 h-12 flex justify-center items-center dark:border-[#616161]'>
-                    <img src="#" alt="pfp" />
+                <div className='rounded-full border w-10 h-10 flex justify-center items-center dark:border-[#616161]'>
+                    <img src={user.image} alt="pfp" className='w-full h-full'/>
                 </div>
                 <span className='font-semibold'>
-                    Name
+                    {user.name}
                 </span>
             </div>
         </div>

@@ -7,6 +7,9 @@ import img from './img.png'
 import map from './map.png'
 import reach from './reach.png'
 import help from './help.png'
+import geko from './geko.png'
+import geo from './geo.png'
+import sav from './sav.jpg'
 
 export {
     friend,
@@ -17,5 +20,8 @@ export {
     img,
     map,
     reach,
-    help
+    help,
+    geko,
+    geo,
+    sav
 }
