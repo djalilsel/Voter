@@ -1,4 +1,4 @@
-import { friend, groups, img, gallery, map, messages, reach, help, sav, geo, geko } from "./src/assets"
+import { friend, groups, img, gallery, map, messages, reach, help, sav, geo, geko, jujutsu, bg1, bg2 } from "./src/assets"
 
 
 export const menu = [
@@ -106,6 +106,7 @@ export const users = [
         username: "Ahmed",
         password: "khalouta",
         image: groups,
+        background: jujutsu,
         name: "Ahmed khalouta",
         url: "/profile/1",
     },
@@ -114,6 +115,7 @@ export const users = [
         username: "Baloumi",
         password: "9adour",
         image: gallery,
+        background: bg1,
         name: "Baloumi 9adour",
         url: "/profile/2",
     },
@@ -122,6 +124,7 @@ export const users = [
         username: "Ali",
         password: "Housan",
         image: reach,
+        background: bg2,
         name: "Ali Housan",
         url: "/profile/3",
     },

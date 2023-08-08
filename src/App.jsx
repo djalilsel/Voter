@@ -15,7 +15,7 @@ function App() {
     <>
       <Route path="/" element={<Layout />} loader={loader}>
         <Route index element={<Home />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile/:id" element={<Profile />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

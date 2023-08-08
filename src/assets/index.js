@@ -10,6 +10,9 @@ import help from './help.png'
 import geko from './geko.png'
 import geo from './geo.png'
 import sav from './sav.jpg'
+import jujutsu from './jujutsu.jpg'
+import bg1 from './bg1.jpg'
+import bg2 from './bg2.jpg'
 
 export {
     friend,
@@ -23,5 +26,8 @@ export {
     help,
     geko,
     geo,
-    sav
+    sav,
+    jujutsu,
+    bg1,
+    bg2
 }
