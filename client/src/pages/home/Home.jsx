@@ -8,6 +8,7 @@ import { posts } from '../../../data';
 const Home = () => {
 
     const user = JSON.parse(localStorage.user)
+    console.log(user)
 
     const POSTS = posts.map(post => {
         return (
@@ -27,7 +28,7 @@ const Home = () => {
         <div className='flex-1 dark:bg-[#535353] p-6 flex flex-col gap-3'>
             <div className='flex gap-2 dark:bg-[#212121] p-6 flex-col border dark:border-[#616161] shadow-lg rounded-lg'>
                 <div className='flex items-center mb-2'>
-                    <img src={user.image} alt="pfp" className='w-8 h-8 mr-3'/>
+                    <img src={user.pfp} alt="pfp" className='w-8 h-8 mr-3'/>
                     <input type="text" className='rounded-md px-2 py-1 bg-inherit border border-[#535353] w-full' placeholder="What's on your mind"/>
                 </div>
                 <div className='flex justify-around'>
