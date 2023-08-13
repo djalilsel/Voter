@@ -121,11 +121,11 @@ export const users = [
     },
     {
         id: 3,
-        username: "Ali",
-        password: "Housan",
+        username: "Djalil",
+        password: "Selamnia",
         image: reach,
         background: bg2,
-        name: "Ali Housan",
+        name: "Djalil Selamnia",
         url: "/profile/3",
     },
 ]
