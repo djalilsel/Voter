@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { redirect } from "react-router";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
 
@@ -9,15 +10,18 @@ const Login = () => {
         username: "",
         password: ""
     })
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null)    
+    const [showPassword, setShowPassword] = useState(false)
+
     const navigate = useNavigate()
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
-            const res = await axios.post("http://localhost:8800/api/auth/login", input)
-            console.log(res)
+            const res = await axios.post("http://localhost:8800/api/auth/login", input, {
+                withCredentials: true,
+              })
             setError(null)
             localStorage.setItem("user", JSON.stringify(res.data))
             navigate("/")
@@ -30,6 +34,16 @@ const Login = () => {
     const handleChange = (e) => {
         e.preventDefault()
         setInput(prevInput => ({...prevInput, [e.target.name]: e.target.value}))
+    }
+
+    const togglePassword = () => {
+        setShowPassword(!showPassword)
+        const input = document.querySelector(".passwordInput")
+        if(input.type === "password"){
+            input.type = "text"
+        } else {
+            input.type = "password"
+        }
     }
 
     return (
@@ -49,7 +63,11 @@ const Login = () => {
                         <h1 className="text-4xl mb-10 ml-4 font-bold text-slate-600">Login</h1>
                         <div className="ml-4 w-11/12 flex flex-col" onSubmit={handleSubmit}>
                             <input name="username" value={input.username} onChange={handleChange} type="text" placeholder="Username" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
-                            <input name="password" value={input.password} onChange={handleChange} type="password" placeholder="Password" className="focus:outline-none border-b p-2 border-slate-400 h-14 " />
+                            <div className='relative flex felx-col mb-1'>
+                                {!showPassword && <FontAwesomeIcon icon={faEye} className='absolute top-6 right-2 cursor-pointer' onClick={togglePassword}/>}
+                                {showPassword && <FontAwesomeIcon icon={faEyeSlash} className='absolute top-6 right-[7px] cursor-pointer' onClick={togglePassword}/>}
+                                <input name="password" value={input.password} onChange={handleChange} type="password" placeholder="Password" className="flex-1 focus:outline-none border-b p-2 border-slate-400 h-14 passwordInput" />
+                            </div>
                             { error && <p className="pt-2 text-red-700">{error}</p>}
                             <button className="text-white bg-background-purple mt-8 inline-block w-40 p-2" type="submit" onClick={handleSubmit}>
                                 Login
