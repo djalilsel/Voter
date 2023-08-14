@@ -33,7 +33,7 @@ const Home = () => {
     })
 
     return (
-        <div className='flex-1 dark:bg-[#535353] p-6 flex flex-col gap-3'>
+        <div className='flex-1 dark:bg-[#535353] p-6 flex flex-col gap-3 mx-24'>
             <div className='flex gap-2 dark:bg-[#212121] p-6 flex-col border dark:border-[#616161] shadow-lg rounded-lg'>
                 <div className='flex items-center mb-2'>
                     <Link to={`/profile/${user.id}`}>

@@ -40,7 +40,7 @@ const Header = () => {
                 <FontAwesomeIcon icon={faEnvelope} className='dark:text-white fa-lg' />                
                 <FontAwesomeIcon icon={faBell} className='dark:text-white fa-lg' />
                 <div className='rounded-full border w-10 h-10 flex justify-center items-center dark:border-[#616161]'>
-                    <img src={user.image} alt="pfp" className='w-full h-full'/>
+                    <img src={user.pfp} alt="pfp" className='w-full h-full rounded-full'/>
                 </div>
                 <span className='font-semibold'>
                     {user.name}

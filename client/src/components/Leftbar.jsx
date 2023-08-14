@@ -21,7 +21,7 @@ const Leftbar = () => {
     })
 
     return (
-        <div className='min-w-[300px] p-4 flex flex-col gap-6 sticky top-[65px] stick-height overflow-scroll no-scrollbar'>
+        <div className='min-w-[300px] p-4 flex flex-col gap-6 sticky top-[65px] stick-height overflow-scroll no-scrollbar dark:bg-[#212121]'>
             <div className='flex flex-col gap-3'>
                 <Settingscard key={user.name} icon={user.image} title={user.name} link={user.url} />
                 {MENU}
