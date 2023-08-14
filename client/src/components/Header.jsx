@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEnvelope, faHouse, faUser, faMoon, faSun, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
 
     const [darkMode, setDarkMode] = useState(localStorage.theme === "dark" ? true : false)
+    const [showOptions, setShowOptions] = useState(false)
+
+    const navigate = useNavigate()
 
     const switchMode = () => {
         setDarkMode(!darkMode)
@@ -17,6 +20,15 @@ const Header = () => {
         document.documentElement.classList.add("dark")
         localStorage.setItem("theme", "dark")
         
+    }
+
+    const toggleOptions = () => {
+        setShowOptions(!showOptions)
+    }
+
+    const logout = () => {
+        localStorage.removeItem("user")
+        navigate("/login")
     }
 
     const user = JSON.parse(localStorage.user)
@@ -39,12 +51,17 @@ const Header = () => {
                 <FontAwesomeIcon icon={faUser}  className='dark:text-white'/> 
                 <FontAwesomeIcon icon={faEnvelope} className='dark:text-white fa-lg' />                
                 <FontAwesomeIcon icon={faBell} className='dark:text-white fa-lg' />
-                <div className='rounded-full border w-10 h-10 flex justify-center items-center dark:border-[#616161]'>
+                <div className='rounded-full border w-10 h-10 flex justify-center items-center dark:border-[#616161] cursor-pointer' onClick={toggleOptions}>
                     <img src={user.pfp} alt="pfp" className='w-full h-full rounded-full'/>
                 </div>
-                <span className='font-semibold'>
-                    {user.name}
-                </span>
+                {showOptions && <div className='absolute top-16 right-6 bg-[#3a3a3a] w-44 p-6 flex flex-col gap-8' >
+                    <Link to={`/profile/${user.id}`} onClick={() => setShowOptions(false)}>
+                        View Profile
+                    </Link>
+                    <div className='cursor-pointer' onClick={logout}>
+                        Logout
+                    </div>
+                </div>}
             </div>
         </div>
     );

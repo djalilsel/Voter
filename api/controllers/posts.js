@@ -1,7 +1,7 @@
 import { db } from "../connect.js"
 
-const getAllPosts = (req, res) => {
-    const q = "SELECT * FROM posts"
+export const getAllPosts = (req, res) => {
+    const q = "SELECT * FROM posts ORDER BY posts.create_date DESC"
 
     db.query(q, (err, data) => {
         if(err) return res.status(500).json(err)
@@ -12,4 +12,22 @@ const getAllPosts = (req, res) => {
     })
 }
 
-export default getAllPosts
+export const createPost = (req, res) => {
+
+    console.log(req.body)
+
+    const q = "INSERT INTO posts (creator_id, description, image) VALUES (?)"
+
+    const values = [
+        req.body.creatorId,
+        req.body.description,
+        req.body.image,
+    ]
+    db.query(q, [values], (err, data) => {
+
+        if(err) return res.status(500).json(err)
+
+        return res.status(200).json("user created successfully")
+    })
+}
+

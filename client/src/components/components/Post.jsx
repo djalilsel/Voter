@@ -31,16 +31,16 @@ const Post = ({ image, creatorId, description, createDate }) => {
 
     if( createDay === currentDay ){
 
-        const diffInMs = (new Date(`${createDay} ${createTime}`).getTime() - new Date(`${currentDay} ${currentTime}`).getTime())
-        if( diffInMs / (1000 * 60 * 60) ){
+        const diffInMs = ( new Date(`${currentDay} ${currentTime}`).getTime() - new Date(`${createDay} ${createTime}`).getTime() )
+        if( (diffInMs / (1000 * 60 * 60)) > 1 ){
             const diff = diffInMs / (1000 * 60 * 60)
             time = Math.abs(Math.round(diff))
             timename = time === 1 ? "hour" : "hours"
-        } else if(diffInMs / (1000 * 60) ){
+        } else if((diffInMs / (1000 * 60)) > 1){
             const diff = diffInMs / (1000 * 60)
             time = Math.abs(Math.round(diff))
             timename = time === 1 ? "minute" : "minutes"
-        } else if(diffInMs / (1000) ){
+        } else if((diffInMs / (1000)) > 1){
             const diff = diffInMs / (1000)
             time = Math.abs(Math.round(diff))
             timename = time === 1 ? "second" : "seconds"
@@ -50,6 +50,7 @@ const Post = ({ image, creatorId, description, createDate }) => {
         time = new Date(`${currentDay}`) - new Date(`${createDay}`)
         time = time / (1000 * 60 * 60 * 24)
     }
+
 
     return (
         <div className='dark:bg-[#212121] mb-2 shadow-lg border dark:border-[#757575] p-3'>
