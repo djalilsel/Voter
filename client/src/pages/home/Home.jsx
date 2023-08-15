@@ -12,6 +12,7 @@ const Home = () => {
 
     const [posts, setPosts] = useState([])
     const [refrech, setRefresh] = useState(false)
+    const [error, setError] = useState(null)
     const [createPostData, setCreatePostData] = useState({
         creatorId: user.id,
         description: "",
@@ -28,8 +29,16 @@ const Home = () => {
 
     const createPost = async (e) => {
         e.preventDefault()
+        if(createPostData.description.length === 0){
+            return setError("fill the description first")
+        }
         await axios.post("http://localhost:8800/api/posts/create", createPostData)
         setRefresh(!refrech)
+        setCreatePostData({
+            creatorId: user.id,
+            description: "",
+            image: ""
+        })
     }
 
     const handleCreatePostChange = (e) => {
@@ -56,6 +65,7 @@ const Home = () => {
                     </Link>
                     <input type="text" name="description" value={createPostData.description} className='rounded-md px-2 py-1 bg-inherit border border-[#535353] w-full' onChange={handleCreatePostChange} placeholder="What's on your mind"/>
                 </div>
+                { error && <p className='font-semibold text-red-600'>{error}</p>}
                 <input type="text" name="image" value={createPostData.image} className='rounded-md px-2 py-1 bg-inherit border border-[#535353] w-full' onChange={handleCreatePostChange} placeholder="Enter Image Url"/>
                 <div className='flex justify-around'>
                     <div className='flex gap-2 items-center'>

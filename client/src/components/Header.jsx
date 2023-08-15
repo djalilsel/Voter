@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEnvelope, faHouse, faUser, faMoon, faSun, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const Header = () => {
 
@@ -26,7 +27,8 @@ const Header = () => {
         setShowOptions(!showOptions)
     }
 
-    const logout = () => {
+    const logout = async () => {
+        await axios.post("http://localhost:8800/api/auth/logout")
         localStorage.removeItem("user")
         navigate("/login")
     }

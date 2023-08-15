@@ -29,9 +29,9 @@ const Post = ({ image, creatorId, description, createDate }) => {
     const currentDay = dateNow.split("T")[0]
     let currentTime = dateNow.split("T")[1].split(".")[0]
 
-    if( createDay === currentDay ){
+const diffInMs = ( new Date(`${currentDay} ${currentTime}`).getTime() - new Date(`${createDay} ${createTime}`).getTime() )
+    if( (diffInMs / (1000 * 60 * 60 * 24)) < 1){
 
-        const diffInMs = ( new Date(`${currentDay} ${currentTime}`).getTime() - new Date(`${createDay} ${createTime}`).getTime() )
         if( (diffInMs / (1000 * 60 * 60)) > 1 ){
             const diff = diffInMs / (1000 * 60 * 60)
             time = Math.abs(Math.round(diff))
@@ -49,6 +49,7 @@ const Post = ({ image, creatorId, description, createDate }) => {
     } else {
         time = new Date(`${currentDay}`) - new Date(`${createDay}`)
         time = time / (1000 * 60 * 60 * 24)
+        timename = "day"
     }
 
 

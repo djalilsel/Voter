@@ -3,6 +3,7 @@ import { db } from "../connect.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
+
 export const register = (req, res) => {
     const q = "SELECT * FROM users WHERE username = ?"
 
@@ -52,20 +53,30 @@ export const login = (req, res) => {
 
         if(!checkedPasswrod) return res.status(400).json("Wrong username or password")
 
-        const token = jwt.sign({ id: data[0].id }, "secretkey")
-
         const { password, ...others } = data[0]
 
-        res.cookie("accessToken", token, {
+        const accessToken = jwt.sign({id: data[0].id}, "secretKey", {
+            expiresIn: '1h',
+        })
+        const refreshToken = jwt.sign({id: data[0].id}, "secretKey", {
+            expiresIn: '7d',
+        })
+
+
+        const qq = "UPDATE users SET refresh_token = ? WHERE id = ?"
+        
+        db.query(qq, [refreshToken, data[0].id], (err, data) => {
+        })
+
+        res.cookie('refreshtoken', refreshToken, {
             httpOnly: true,
+
         }).status(200).json(others)
+
     })
 }
 
 export const logout = (req, res) => {
-    res.clearCookie("accessToken", {
-        secure: true,
-        sameSite: "none"
-    }).status(200).json("User Logged out successfully")
+    res.clearCookie('refreshtoken').status(200).json("token cleared")
 }
 

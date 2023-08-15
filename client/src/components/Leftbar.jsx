@@ -2,6 +2,7 @@ import React from 'react';
 import Settingscard from './components/Settingscard';
 
 import { menu, shortcuts, others } from '../../data'
+import { Link } from 'react-router-dom';
 
 const Leftbar = () => {
 
@@ -23,7 +24,10 @@ const Leftbar = () => {
     return (
         <div className='min-w-[300px] p-4 flex flex-col gap-6 sticky top-[65px] stick-height overflow-scroll no-scrollbar dark:bg-[#212121]'>
             <div className='flex flex-col gap-3'>
-                <Settingscard key={user.name} icon={user.image} title={user.name} link={user.url} />
+                <Link className='flex items-center font-medium gap-4 rounded-full' to={`/profile/${user.id}`}>
+                    <img src={user.pfp} className='w-8 h-8 rounded-full'/>
+                    <span>{user.name}</span>
+                </Link>
                 {MENU}
             </div>
             <hr />

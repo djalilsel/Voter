@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Miniprofile from './components/Miniprofile';
 
-import { friendSuggestions, hottestVotes } from '../../data'
 import Hottestvotes from './components/Hottestvotes';
+import axios from 'axios';
 
 const Rightbar = () => {
 
-    const FRIENDSUGGESTIONS = friendSuggestions.map((person) => {
-        return <Miniprofile key={person.name} data={person} />
+    const [suggestions, setSuggestions] = useState([])
+    const [hottestVotes, setHottestVotes] = useState([])
+
+    useEffect(() => {
+        async function fetchSuggestions(){
+            const res = await axios.get("http://localhost:8800/api/user/suggestions")
+            setSuggestions(res.data)
+        }
+        fetchSuggestions()
+
+        async function fetchHottestVotes(){
+            const res = await axios.get("http://localhost:8800/api/posts/hottestvotes")
+            setHottestVotes(res.data)
+        }
+        fetchHottestVotes()
+    }, [])
+
+    const FRIENDSUGGESTIONS = suggestions.map((user) => {
+        return <Miniprofile key={user.id} name={user.name} pfp={user.pfp} id={user.id} />
     })
 
+
     const HOTTESTVOTES = hottestVotes.map((vote) => {
-        return <Hottestvotes key={vote.publisher} data={vote} /> 
+        return <Hottestvotes key={vote.id} id={vote.id} image={vote.image} creatorId={vote.creator_id} description={vote.description} /> 
     })
 
     return (

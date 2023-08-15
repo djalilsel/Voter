@@ -10,6 +10,7 @@ const Profile = () => {
 
     const { id } = useParams()
     const [data, setData] = useState({})
+    const [posts, setPosts] = useState([])
 
     useEffect(() => {
 
@@ -22,21 +23,27 @@ const Profile = () => {
 
     }, [])
 
+    useEffect(() => {
 
-    // const POSTS = posts.map((post) => {
-    //     if(post.publisher === name){
-    //         return (
-    //             <Post 
-    //                 key={post.name} 
-    //                 pfp={post.pfp} 
-    //                 image={post.image} 
-    //                 publisher={post.publisher}
-    //                 publisherUrl={post.publisherUrl}
-    //                 postUrl={post.postUrl}
-    //                 description={post.description}
-    //             />)
-    //     }
-    // })
+        async function fetchPosts() {
+            const res = await axios.get(`http://localhost:8800/api/posts/userposts/${id}`)
+            setPosts(res.data)
+        }
+
+        fetchPosts()
+
+    }, [])
+
+    const POSTS = posts.map((post) => {
+        return (
+            <Post 
+                key={post.id} 
+                creatorId={post.creator_id}
+                image={post.image} 
+                description={post.description}
+                createDate={post.create_date}
+            />)
+    })
 
     return (
         <div className='flex-1 dark:bg-[#535353] relative flex flex-col'>
@@ -55,9 +62,9 @@ const Profile = () => {
                         <FontAwesomeIcon icon={faLinkedin} className="dark:text-white text-blue-900 fa-2xl" />
                     </div>
                 </div>
-                {/* <div className='relative top-[-40px]'>
+                <div className='relative top-[-40px]'>
                     {POSTS}
-                </div> */}
+                </div>
             </div>
         </div>
     );
