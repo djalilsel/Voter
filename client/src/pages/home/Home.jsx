@@ -81,7 +81,7 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            <div className='flex flex-col gap-3'>
+            <div id='posts' className='flex flex-col gap-3 overscroll-auto'>
                 {POSTS}
             </div>
         </div>

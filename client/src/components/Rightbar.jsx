@@ -3,16 +3,21 @@ import Miniprofile from './components/Miniprofile';
 
 import Hottestvotes from './components/Hottestvotes';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Rightbar = () => {
+
+    const { id } = JSON.parse(localStorage.user)
 
     const [suggestions, setSuggestions] = useState([])
     const [hottestVotes, setHottestVotes] = useState([])
 
+
     useEffect(() => {
         async function fetchSuggestions(){
-            const res = await axios.get("http://localhost:8800/api/user/suggestions")
+            const res = await axios.get(`http://localhost:8800/api/user/suggestions/${id}`)
             setSuggestions(res.data)
+            
         }
         fetchSuggestions()
 
@@ -22,6 +27,8 @@ const Rightbar = () => {
         }
         fetchHottestVotes()
     }, [])
+
+    
 
     const FRIENDSUGGESTIONS = suggestions.map((user) => {
         return <Miniprofile key={user.id} name={user.name} pfp={user.pfp} id={user.id} />

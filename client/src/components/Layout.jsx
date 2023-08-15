@@ -24,7 +24,7 @@ const Layout = () => {
 
 
     return (
-        <div className='dark:bg-[#535353] border-none dark:text-white'>
+        <div className='dark:bg-[#535353] border-none dark:text-white relative'>
             <Header/>
             <div className='flex justify-center z-20'>
                 <Leftbar />

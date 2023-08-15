@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Miniprofile = ({ name, pfp, id }) => {
+const  Miniprofile = ({ name, pfp, id }) => {
     return (
         <div className='flex justify-between'>
             <Link className='flex items-center font-medium gap-3' to={`/profile/${id}`}>
