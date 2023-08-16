@@ -56,6 +56,17 @@ export const getUserPosts = (req, res) =>{
 
         return res.status(200).json(data)
     })
-    
 }
 
+export const deletePost = (req, res) =>{
+    const { postId, userId } = req.params
+
+    const q = "DELETE FROM posts WHERE creator_id = ? && id = ?"
+
+    db.query(q, [userId, postId], (err, data) => {
+
+        if(err) return res.status(500).json(err)
+
+        return res.status(200).json("post deleted")
+    })
+}

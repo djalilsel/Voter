@@ -69,9 +69,12 @@ const Login = () => {
                                 <input name="password" value={input.password} onChange={handleChange} type="password" placeholder="Password" className="flex-1 focus:outline-none border-b p-2 border-slate-400 h-14 passwordInput" />
                             </div>
                             { error && <p className="pt-2 text-red-700">{error}</p>}
-                            <button className="text-white bg-background-purple mt-8 inline-block w-40 p-2" type="submit" onClick={handleSubmit}>
-                                Login
-                            </button>
+                            <div className="flex justify-between items-center w-full mt-8 ">
+                                <button className="text-white bg-background-purple inline-block w-40 p-2" type="submit" onClick={handleSubmit}>
+                                    Login
+                                </button>
+                                <Link className="text-xs underline text-purple-600 cursor-pointer" to={"/recovery"}>Forget Credentials?</Link>
+                            </div>
                         </div>
                 </div>
             </div>
